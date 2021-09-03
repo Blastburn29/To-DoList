@@ -3,7 +3,9 @@ let btn = document.querySelector(".forms-btn")
 let edit = document.querySelector('.edity')
 let editIndex = document.querySelector("#hidden")
 let listArray = []
-
+if (localStorage.getItem('list') == null) {
+    localStorage.setItem('list',JSON.stringify(listArray))
+}
 
 function updateList() {
     let lists = document.querySelector('.lists');
