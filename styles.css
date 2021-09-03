@@ -166,34 +166,3 @@ main {
 .edity {
     display: none;
 }
-/* .edit-lists {
-    position: relative;
-    width: 80rem;
-    height: 35rem;
-    background: #F7F7F7;
-    box-shadow: 0px 0px 30.8108px #59FFB9;
-    border-radius: 19px;
-    padding: 1rem 2rem;
-}
-
-.edit-title {
-    font-size: 35px;
-    padding: 0.5rem 0 1rem 0;
-}
-
-.edit-task {
-    font-size: 24px;
-    padding-bottom: 2rem;
-}
-
-.edit-btn {
-    bottom: 2rem;
-    right: 2rem;
-    position: absolute;
-    font-size: 24px;
-    width: 7rem;
-    height: 3rem;
-    background: #97FFD3;
-    border-radius: 9px;
-    border: 2px solid #97FFD3;
-} */
