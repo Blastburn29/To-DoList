@@ -80,6 +80,8 @@ edit.addEventListener("click",()=> {
     editList[0] = title;
     editList[1] = task;
     localStorage.setItem('list',JSON.stringify(listArray))
+    document.querySelector(".addy").style.display = "block";
+    edit.style.display = "none";
     document.querySelector(".forms-title").value = '';
     document.querySelector(".forms-task").value = '';
     updateList()
