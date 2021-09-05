@@ -11,14 +11,17 @@
     <nav>
         <img src="assets/logo.svg" alt="Logo">
         <span>SnipLab</span>
+        <button class="adding">Add Task</button>
+        <button class="viewing">View Task</button>
     </nav>
     <main>
-        
         <article class="lists"></article>
         <aside class="forms">
             <h1 class="forms-heading">Add Task</h1>
             <input type="text" placeholder="Title" class="forms-title">
+            <span class="validate-warning">Enter your Title !!</span>
             <textarea placeholder="Task" class="forms-task"></textarea>
+            <span class="validate-warning">Enter your Task !!</span>
             <button class="forms-btn addy">Add</button>
             <button class="forms-btn edity">Edit</button>
             <input type="hidden" id="hidden">
