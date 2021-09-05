@@ -5,6 +5,8 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     outline: none;
+    caret-color: #318768;
+    transition: all 200ms ease-in-out;
 }
 
 ::-webkit-scrollbar {
@@ -82,6 +84,8 @@ main {
     border: 2px solid #59FFB9;
     border-radius: 5px;
     margin-bottom: 1rem;
+    transition: border 200ms ease;
+
 }
 
 .forms-title::placeholder,.forms-task::placeholder {
@@ -97,6 +101,7 @@ main {
     border-radius: 5px;
     resize: none;
     margin-bottom: 1rem;
+    transition: border 200ms ease;
 }
 
 .forms-btn {
@@ -108,11 +113,44 @@ main {
     border: 1px solid #97FFD3;
     border-radius: 9px;
     outline: none;
+    transition: background-color 200ms ease;
+}
+
+.forms-btn:hover {
+    background-color: #62F8B9;
+}
+
+.validate-warning {
+    display: none;
+    color: #6640FF;
+    /* transition: opacity,display 1s ease-in-out; */
+    animation: validate 1500ms cubic-bezier(0,1.24,1,.81);
+    margin-bottom: 1rem;
+}
+
+@keyframes validate {
+    0% {
+        display: block;
+        opacity: 0.7;
+        transform: translateY(-0.5rem);
+    }
+    99% {
+        opacity: 1;
+        transform: translateY(0);
+
+    }100% {
+        display: none;
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+}
+.validate-warning-field {
+    border: 2px solid #6640FF;
 }
 
 .lists {
     width: 75rem;
-    height: 37.3rem;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -151,6 +189,11 @@ main {
     width: 2rem;
     height: 2rem;
     cursor: pointer;
+    transition: transform 200ms ease-in-out;
+}
+
+.edit:hover,.delete:hover {
+    transform: translateY(-0.25rem);
 }
 
 .delete {
@@ -165,4 +208,86 @@ main {
 
 .edity {
     display: none;
+}
+
+.fade {
+    animation: fade 500ms ease reverse;
+}
+
+@keyframes fade {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+@media only screen and (max-width:1064px) {
+    .list {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .lists {
+        overflow-x: hidden;
+    }
+
+    .task {
+        width: 15rem;
+    }
+    
+}
+
+.adding,.viewing {
+    display: none;
+    cursor: pointer;
+    font-size: 14px;
+    width: 5rem;
+    height: 2rem;
+    background-color: #61E4AD;
+    border: 1px solid #61E4AD;
+    border-radius: 5px;
+    outline: none;
+    margin-right: 15px;
+}
+@media only screen and (max-width: 900px) {
+    .adding,.viewing {
+        display: block;
+    }
+
+    .forms {
+        display: none;
+        margin-left: 2.5rem;
+    }
+
+    .task {
+        width: 15rem;
+    }
+    nav {
+        padding: 0 1rem;
+    }
+    main {
+    padding: 1rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .forms {
+        width: 20rem;
+        margin:0;
+    }
+    .forms-btn,.forms-task,.forms-title {
+        width: 13rem;
+    }
+    .adding,.viewing {
+        font-size: 10px;
+    }
+    main {
+        padding: 1rem 1rem;
+    }
+    .lists {
+    margin:0;
+
+    }
 }
