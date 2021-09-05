@@ -2,9 +2,15 @@ let title,task;
 let btn = document.querySelector(".forms-btn")
 let edit = document.querySelector('.edity')
 let editIndex = document.querySelector("#hidden")
+let addbtn = document.querySelector('.adding');
+let viewbtn = document.querySelector('.viewing');
 let listArray = []
 if (localStorage.getItem('list') == null) {
     localStorage.setItem('list',JSON.stringify(listArray))
+}
+if(document.body.clientHeight > 900) {
+    document.querySelector('.forms').style.display ="block";
+    document.querySelector('.lists').style.display ="flex";
 }
 
 function updateList() {
@@ -19,7 +25,7 @@ function updateList() {
         }else {
             listArray.forEach((e,index) => {
                 list += `
-                <div class="list">
+                <div class="list fade">
                     <h1 class="title">${e[0]}</h1>
                     <h2 class="task">${e[1]}</h2>
                     <img src="assets/edit.svg" alt="edit" onclick="editItem(${index})" class="edit">
@@ -39,7 +45,6 @@ function updateList() {
 }
 
 function removeItem(index) {
-    console.log(`Deleting ${index} element`);
     listArray = JSON.parse(localStorage.getItem('list'))
     listArray.splice(index,1)
     localStorage.setItem('list',JSON.stringify(listArray))
@@ -60,18 +65,38 @@ function editItem(index) {
 btn.addEventListener("click",()=>{
     title = document.querySelector(".forms-title").value;
     task = document.querySelector(".forms-task").value;
-    if (localStorage.getItem('list')===null) {
-        listArray = [];
-        listArray.push([title.value,task.value]);
-        localStorage.setItem('list',JSON.stringify(listArray))
-    }else {
-        listArray = JSON.parse(localStorage.getItem('list'))
-        listArray.push([title,task]);
-        localStorage.setItem('list',JSON.stringify(listArray))
+    if(title =='' && task=='') {
+        // console.log("Empty");
+        let validate = document.querySelectorAll('.validate-warning');
+        document.querySelector(".forms-title").classList.add('validate-warning-field')
+        document.querySelector(".forms-task").classList.add('validate-warning-field')
+        validate.forEach(e=>{
+            e.style.display = "block";
+            e.style.opacity = "1";
+        })
+        setTimeout(()=>{
+            validate.forEach(e=>{
+                e.style.display = "none";
+            })
+            document.querySelector(".forms-title").classList.remove('validate-warning-field')
+            document.querySelector(".forms-task").classList.remove('validate-warning-field')
+        },1500)
+        
+    }else  {
+        if (localStorage.getItem('list')===null) {
+            listArray = [];
+            listArray.push([title.value,task.value]);
+            localStorage.setItem('list',JSON.stringify(listArray))
+        }else {
+            listArray = JSON.parse(localStorage.getItem('list'))
+            listArray.push([title,task]);
+            localStorage.setItem('list',JSON.stringify(listArray))
+        }
+        document.querySelector(".forms-title").value = '';
+        document.querySelector(".forms-task").value = '';
+        updateList();
     }
-    document.querySelector(".forms-title").value = '';
-    document.querySelector(".forms-task").value = '';
-    updateList();
+    
 })
 
 edit.addEventListener("click",()=> {
@@ -89,4 +114,14 @@ edit.addEventListener("click",()=> {
     updateList()
 })
 
+addbtn.addEventListener("click",()=>{
+    document.querySelector('.forms').style.display ="block";
+    document.querySelector('.lists').style.display ="none";
+
+})
+
+viewbtn.addEventListener("click",()=>{
+    document.querySelector('.forms').style.display ="none";
+    document.querySelector('.lists').style.display ="flex";
+})
 document.addEventListener("load",updateList())
