@@ -262,6 +262,7 @@ main {
 
     .task {
         width: 15rem;
+        height: 12.5rem;
     }
     nav {
         padding: 0 1rem;
