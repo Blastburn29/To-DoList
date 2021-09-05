@@ -119,7 +119,7 @@ edit.addEventListener("click",()=> {
     edit.style.display = "none";
     document.querySelector(".forms-title").value = '';
     document.querySelector(".forms-task").value = '';
-    if(document.body.clientHeight < 900) {
+    if(document.body.clientWidth < 900) {
         document.querySelector('.forms').style.display ="none";
         document.querySelector('.lists').style.display ="flex";
     }
