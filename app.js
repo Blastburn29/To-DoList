@@ -8,7 +8,7 @@ let listArray = []
 if (localStorage.getItem('list') == null) {
     localStorage.setItem('list',JSON.stringify(listArray))
 }
-if(document.body.clientHeight > 900) {
+if(document.body.clientWidth > 900) {
     document.querySelector('.forms').style.display ="block";
     document.querySelector('.lists').style.display ="flex";
 }
@@ -60,7 +60,7 @@ function editItem(index) {
     document.querySelector(".forms-task").value = editList[1];
     document.querySelector(".addy").style.display = "none";
     edit.style.display = "block";
-    if(document.body.clientHeight < 900) {
+    if(document.body.clientWidth < 900) {
         document.querySelector('.forms').style.display ="block";
         document.querySelector('.lists').style.display ="none";
     }
@@ -98,7 +98,7 @@ btn.addEventListener("click",()=>{
         }
         document.querySelector(".forms-title").value = '';
         document.querySelector(".forms-task").value = '';
-        if(document.body.clientHeight < 900) {
+        if(document.body.clientWidth < 900) {
             document.querySelector('.forms').style.display ="none";
             document.querySelector('.lists').style.display ="flex";
         }
